@@ -120,6 +120,9 @@ public class ImageFormat {
         return fFilename;
     }
 
+    /**
+     * @deprecated use {@link #getHorizontalAlign()} instead
+     */
     @Deprecated
     public String getLocation() {
         return getHorizontalAlign();
@@ -212,6 +215,9 @@ public class ImageFormat {
         this.fFilename = filename;
     }
 
+    /**
+     * @deprecated use {@link #setHorizontalAlign(String)} instead
+     */
     @Deprecated
     public void setLocation(String location) {
         setHorizontalAlign(location);

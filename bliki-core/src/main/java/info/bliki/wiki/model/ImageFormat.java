@@ -17,6 +17,9 @@ import info.bliki.wiki.filter.WikipediaScanner;
  *
  */
 public class ImageFormat {
+    private static final Set<String> TYPE =
+        new HashSet<>(Arrays.asList("border", "frameless", "frame", "framed", "thumb", "thumbnail"));
+
     private static final Set<String> HORIZONTAL_ALIGNMENT = new HashSet<>(Arrays.asList("left", "right", "none"));
 
     private static final Set<String> VERTICAL_ALIGNMENT =
@@ -54,18 +57,17 @@ public class ImageFormat {
                             continue;
                         }
                     } else {
-                        if (token.equals("frameless") || token.equals("frame") || token.equals("thumb")
-                            || token.equals("thumbnail") || token.equals("border")) {
+                        if (TYPE.contains(token)) {
                             img.setType(token);
                             continue;
                         }
 
-                        if (HORIZONTAL_ALIGNMENT.contains(token.toLowerCase())) {
+                        if (HORIZONTAL_ALIGNMENT.contains(token)) {
                             img.setHorizontalAlign(token);
                             continue;
                         }
 
-                        if (VERTICAL_ALIGNMENT.contains(token.toLowerCase())) {
+                        if (VERTICAL_ALIGNMENT.contains(token)) {
                             img.setVerticalAlign(token);
                             continue;
                         }

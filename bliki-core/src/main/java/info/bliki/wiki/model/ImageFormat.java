@@ -1,9 +1,12 @@
 package info.bliki.wiki.model;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import info.bliki.wiki.filter.Encoder;
 import info.bliki.wiki.filter.WikipediaScanner;
-
-import java.util.List;
 
 /**
  * Represents an [[Image:....]] wiki link with all the possible attributes.
@@ -14,6 +17,10 @@ import java.util.List;
  *
  */
 public class ImageFormat {
+    private static final Set<String> HORIZONTAL_ALIGNMENT = new HashSet<>(Arrays.asList("left", "right", "none"));
+
+    private static final Set<String> VERTICAL_ALIGNMENT =
+        new HashSet<>(Arrays.asList("baseline", "sub", "super", "top", "text-top", "middle", "bottom", "text-bottom"));
 
     public static ImageFormat getImageFormat(String rawImageLink, String imageNamespace) {
         ImageFormat img = new ImageFormat();
@@ -53,8 +60,13 @@ public class ImageFormat {
                             continue;
                         }
 
-                        if (token.equals("right") || token.equals("left") || token.equals("center") || token.equals("none")) {
-                            img.setLocation(token);
+                        if (HORIZONTAL_ALIGNMENT.contains(token.toLowerCase())) {
+                            img.setHorizontalAlign(token);
+                            continue;
+                        }
+
+                        if (VERTICAL_ALIGNMENT.contains(token.toLowerCase())) {
+                            img.setVerticalAlign(token);
                             continue;
                         }
 
@@ -74,7 +86,9 @@ public class ImageFormat {
 
     private String fType;
 
-    private String fLocation = "none";
+    private String fHorizontalAlign = "none";
+
+    private String fVerticalAlign = "middle";
 
     private String fWidthStr = null;
 
@@ -104,8 +118,23 @@ public class ImageFormat {
         return fFilename;
     }
 
+    @Deprecated
     public String getLocation() {
-        return fLocation;
+        return getHorizontalAlign();
+    }
+
+    /**
+     * @since 3.1.1-xwiki
+     */
+    public String getHorizontalAlign() {
+        return fHorizontalAlign;
+    }
+
+    /**
+     * @since 3.1.1-xwiki
+     */
+    public String getVerticalAlign() {
+        return fVerticalAlign;
     }
 
     public String getNamespace() {
@@ -181,8 +210,23 @@ public class ImageFormat {
         this.fFilename = filename;
     }
 
+    @Deprecated
     public void setLocation(String location) {
-        this.fLocation = location.toLowerCase();
+        setHorizontalAlign(location);
+    }
+
+    /**
+     * @since 3.1.1-xwiki
+     */
+    public void setHorizontalAlign(String horizontalAlign) {
+        this.fHorizontalAlign = horizontalAlign.toLowerCase();
+    }
+
+    /**
+     * @since 3.1.1-xwiki
+     */
+    public void setVerticalAlign(String verticalAlign) {
+        this.fVerticalAlign = verticalAlign.toLowerCase();
     }
 
     public void setNamespace(String namespace) {

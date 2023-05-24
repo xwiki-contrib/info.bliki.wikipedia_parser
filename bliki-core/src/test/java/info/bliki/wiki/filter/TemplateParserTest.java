@@ -1,13 +1,13 @@
 package info.bliki.wiki.filter;
 
+import java.util.HashMap;
+import java.util.Locale;
+
+import org.junit.Test;
+
 import info.bliki.wiki.model.Configuration;
 import info.bliki.wiki.model.WikiModel;
 import info.bliki.wiki.tags.HTMLBlockTag;
-import org.junit.Test;
-
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Locale;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

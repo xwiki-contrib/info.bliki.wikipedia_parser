@@ -21,8 +21,6 @@ import info.bliki.wiki.template.Safesubst;
 import info.bliki.wiki.template.Subst;
 
 import static info.bliki.wiki.filter.AbstractWikipediaParser.getRedirectedTemplateContent;
-import static info.bliki.wiki.filter.TemplateParser.createSingleParameter;
-import static info.bliki.wiki.filter.TemplateParser.mergeParameters;
 import static info.bliki.wiki.filter.WikipediaParser.parseRedirect;
 
 /**

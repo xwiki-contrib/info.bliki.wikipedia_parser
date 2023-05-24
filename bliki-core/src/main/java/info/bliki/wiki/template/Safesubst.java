@@ -1,5 +1,9 @@
 package info.bliki.wiki.template;
 
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+
 import info.bliki.htmlcleaner.Utils;
 import info.bliki.wiki.filter.ParsedPageName;
 import info.bliki.wiki.filter.TemplateParser;
@@ -7,12 +11,6 @@ import info.bliki.wiki.filter.Util;
 import info.bliki.wiki.model.IWikiModel;
 import info.bliki.wiki.model.WikiModelContentException;
 import info.bliki.wiki.namespaces.INamespace;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * A template parser function for <code>{{safesubst: ... }}</code>. See

@@ -1,14 +1,13 @@
 package info.bliki.wiki.namespaces;
 
-import info.bliki.wiki.namespaces.INamespace.NamespaceCode;
-import info.bliki.wiki.namespaces.Namespace.NamespaceValue;
+import java.util.Locale;
+
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Locale;
+import info.bliki.wiki.namespaces.INamespace.NamespaceCode;
+import info.bliki.wiki.namespaces.Namespace.NamespaceValue;
 
-import static info.bliki.wiki.namespaces.INamespace.NamespaceCode.*;
-import static info.bliki.wiki.namespaces.INamespace.NamespaceCode.CITATIONS_NAMESPACE_KEY;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**

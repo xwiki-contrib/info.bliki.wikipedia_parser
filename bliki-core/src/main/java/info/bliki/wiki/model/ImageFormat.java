@@ -28,7 +28,7 @@ public class ImageFormat {
     public static ImageFormat getImageFormat(String rawImageLink, String imageNamespace) {
         ImageFormat img = new ImageFormat();
         List<String> list = WikipediaScanner.splitByPipe(rawImageLink, null);
-        if (list.size() > 0) {
+        if (!list.isEmpty()) {
             String attrValue;
             String token = list.get(0).trim();
             img.setFilename("");

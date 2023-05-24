@@ -47,7 +47,8 @@ public class ImageFormat {
                             continue;
                         }
                     } else {
-                        if (token.equals("frame") || token.equals("thumb") || token.equals("thumbnail") || token.equals("border")) {
+                        if (token.equals("frameless") || token.equals("frame") || token.equals("thumb")
+                            || token.equals("thumbnail") || token.equals("border")) {
                             img.setType(token);
                             continue;
                         }

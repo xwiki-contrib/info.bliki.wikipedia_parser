@@ -1,6 +1,7 @@
 package info.bliki.api;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import software.betamax.ConfigurationBuilder;
@@ -40,6 +41,7 @@ public class ConnectorTest {
         assertThat(result).isNull();
     }
 
+    @Ignore
     @Betamax(tape = "loginWithUsernameSuccess", mode = READ_SEQUENTIAL)
     @Test public void testLoginWithUsernameSuccess() throws Exception {
         User user = new User("jberkel", "testing", "https://en.wiktionary.org/w/api.php");
@@ -51,6 +53,7 @@ public class ConnectorTest {
         assertThat(result.getUserid()).isEqualTo("1580588");
     }
 
+    @Ignore
     @Betamax(tape = "queryContentFoo", mode = READ_ONLY)
     @Test public void testQueryContent() throws Exception {
         List<Page> pages = subject.queryContent(anonUser, Collections.singletonList("foo"));

@@ -16,8 +16,6 @@
  */
 package info.bliki.wiki.addon.latex;
 
-import info.bliki.wiki.model.WikiModel;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.MessageFormat;

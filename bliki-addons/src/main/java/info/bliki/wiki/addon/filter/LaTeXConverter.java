@@ -106,7 +106,7 @@ public class LaTeXConverter implements ITextConverter {
             throws IOException {
         Map<String, String> map = imageTagNode.getAttributes();
         String caption = imageFormat.getCaption();
-        String location = imageFormat.getLocation();
+        String location = imageFormat.getHorizontalAlign();
         String type = imageFormat.getType();
         int pxSize = imageFormat.getWidth();
         if (pxSize != -1) {

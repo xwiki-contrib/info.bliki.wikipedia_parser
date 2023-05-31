@@ -132,23 +132,23 @@ public class HTMLConverter implements ITextConverter {
         if (alt == null) {
             alt = "";
         }
-        String location = imageFormat.getLocation();
+        String horizontalAlign = imageFormat.getHorizontalAlign();
         String type = imageFormat.getType();
         int pxWidth = imageFormat.getWidth();
         int pxHeight = imageFormat.getHeight();
         if ("thumb".equals(type) || "frame".equals(type)) {
-            imageThumbToHTML(imageTagNode, resultBuffer, model, map, caption, alt, location, type, pxWidth, pxHeight);
+            imageThumbToHTML(imageTagNode, resultBuffer, model, map, caption, alt, horizontalAlign, type, pxWidth, pxHeight);
         } else {
-            imageSimpleToHTML(imageTagNode, resultBuffer, model, map, caption, alt, location, type, pxWidth, pxHeight);
+            imageSimpleToHTML(imageTagNode, resultBuffer, model, map, caption, alt, horizontalAlign, type, pxWidth, pxHeight);
         }
     }
 
     private void imageThumbToHTML(TagNode imageTagNode, Appendable resultBuffer, IWikiModel model, Map<String, String> map,
-            String caption, String alt, String location, String type, int pxWidth, int pxHeight) throws IOException {
+            String caption, String alt, String horizontalAlign, String type, int pxWidth, int pxHeight) throws IOException {
         resultBuffer.append("\n<div class=\"thumb ");
-        if ("left".equals(location)) {
+        if ("left".equals(horizontalAlign)) {
             resultBuffer.append("tleft\"");
-        } else if ("right".equals(location)) {
+        } else if ("right".equals(horizontalAlign)) {
             resultBuffer.append("tright\"");
         } else {
             resultBuffer.append("tright\"");
@@ -193,10 +193,10 @@ public class HTMLConverter implements ITextConverter {
         }
 
         StringBuilder clazz = null;
-        if (location != null && !(location.equalsIgnoreCase("none"))) {
+        if (horizontalAlign != null && !(horizontalAlign.equalsIgnoreCase("none"))) {
             clazz = new StringBuilder(64);
             clazz.append(" class=\"location-");
-            clazz.append(location);
+            clazz.append(horizontalAlign);
         }
         if (type != null) {
             if (clazz == null) {

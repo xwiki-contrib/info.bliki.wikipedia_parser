@@ -11,6 +11,12 @@ public class EncoderTest {
     }
 
     @Test
+    public void testIsUrlIdentifierParenthesis() throws Exception {
+        assertThat(Encoder.isUrlIdentifierPart('(')).isTrue();
+        assertThat(Encoder.isUrlIdentifierPart(')')).isTrue();
+    }
+
+    @Test
     public void testEncodeNamespacePage() throws Exception {
         assertThat(Encoder.encodeTitleToUrl("Foo:Bar", false)).isEqualTo("Foo:Bar");
     }

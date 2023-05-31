@@ -465,7 +465,7 @@ public class Encoder {
             return true;
         }
         // ' (#39;) character is excluded because of its use in wiki bold and italic markup
-        final String test = "-_.!~*;/?:@#&=+$,%\\";
+        final String test = "-_.!~*;/?:@#&=+$,%\\()";
         return test.indexOf(ch) != -1;
     }
 }

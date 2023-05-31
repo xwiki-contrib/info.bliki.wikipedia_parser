@@ -377,8 +377,7 @@ public abstract class AbstractWikiModel implements IWikiModel, IContext {
             // TODO: test all these cases
             if (caption != null
                     && caption.length() > 0
-                    && ("frame".equals(imageType) || "thumb".equals(imageType) || "thumbnail"
-                            .equals(imageType))) {
+                    && (ImageFormat.TYPES_STANDALONE.contains(imageType))) {
 
                 TagNode captionTagNode = new TagNode("div");
                 String clazzValue = "caption";

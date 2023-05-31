@@ -17,12 +17,15 @@ import info.bliki.wiki.filter.WikipediaScanner;
  *
  */
 public class ImageFormat {
-    private static final Set<String> TYPE =
+    public static final Set<String> TYPES_STANDALONE =
+        new HashSet<>(Arrays.asList("frame", "framed", "thumb", "thumbnail"));
+
+    public static final Set<String> TYPES =
         new HashSet<>(Arrays.asList("border", "frameless", "frame", "framed", "thumb", "thumbnail"));
 
-    private static final Set<String> HORIZONTAL_ALIGNMENT = new HashSet<>(Arrays.asList("left", "right", "none"));
+    public static final Set<String> HORIZONTAL_ALIGNMENT = new HashSet<>(Arrays.asList("left", "right", "none"));
 
-    private static final Set<String> VERTICAL_ALIGNMENT =
+    public static final Set<String> VERTICAL_ALIGNMENT =
         new HashSet<>(Arrays.asList("baseline", "sub", "super", "top", "text-top", "middle", "bottom", "text-bottom"));
 
     public static ImageFormat getImageFormat(String rawImageLink, String imageNamespace) {
@@ -57,7 +60,7 @@ public class ImageFormat {
                             continue;
                         }
                     } else {
-                        if (TYPE.contains(token)) {
+                        if (TYPES.contains(token)) {
                             img.setType(token);
                             continue;
                         }

@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>info.bliki.wiki</groupId>
     <artifactId>bliki</artifactId>
@@ -7,8 +9,11 @@
     <version>3.1.1-SNAPSHOT</version>
     <description>
         The Bliki API is a Java-based Wiki to HTML renderer with MediaWiki syntax support.
+
+        This is an XWiki fork with various fixes and improvements on the core
+        parser since the original project appears to be dead.
     </description>
-    <url>https://bitbucket.org/axelclk/info.bliki.wiki</url>
+    <url>https://github.com/xwiki-contrib/info.bliki.wikipedia_parser</url>
 
     <organization>
         <name>Java Wikipedia API (Bliki engine)</name>
@@ -25,23 +30,25 @@
             <id>jberkel</id>
             <name>Jan Berkel</name>
         </developer>
+
+        <developer>
+            <id>tmortagne</id>
+            <name>Thomas Mortagne</name>
+        </developer>
     </developers>
 
     <scm>
-        <connection>scm:git:https://bitbucket.org/axelclk/info.bliki.wiki.git</connection>
-        <developerConnection>scm:git:ssh://git@bitbucket.org/axelclk/info.bliki.wiki.git</developerConnection>
-        <tag>master</tag>
-        <url>https://bitbucket.org/axelclk/info.bliki.wiki/src</url>
+        <connection>scm:git:git://github.com/xwiki-contrib/info.bliki.wiki.git</connection>
+        <developerConnection>
+            scm:git:git@github.com:xwiki-contrib/info.bliki.wiki.git</developerConnection>
+        <url>https://github.com/xwiki-contrib/info.bliki.wiki/tree/master</url>
+        <tag>HEAD</tag>
     </scm>
 
     <issueManagement>
-        <system>Bitbucket</system>
-        <url>https://bitbucket.org/axelclk/info.bliki.wiki/issues</url>
+        <system>GitHub</system>
+        <url>https://github.com/xwiki-contrib/info.bliki.wikipedia_parser/issues</url>
     </issueManagement>
-
-    <ciManagement>
-        <url>https://travis-ci.org/axkr/info.bliki.wikipedia_parser</url>
-    </ciManagement>
 
     <licenses>
         <license>
@@ -69,24 +76,6 @@
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>info.bliki.wiki</groupId>
-                <artifactId>bliki-core</artifactId>
-                <version>3.1.1-SNAPSHOT</version>
-            </dependency>
-
-            <dependency>
-                <groupId>info.bliki.wiki</groupId>
-                <artifactId>bliki-creator</artifactId>
-                <version>3.1.1-SNAPSHOT</version>
-            </dependency>
-
-            <dependency>
-                <groupId>info.bliki.wiki</groupId>
-                <artifactId>bliki-addons</artifactId>
-                <version>3.1.1-SNAPSHOT</version>
-            </dependency>
-
             <dependency>
                 <groupId>org.apache.httpcomponents</groupId>
                 <artifactId>httpclient</artifactId>
@@ -126,14 +115,14 @@
             <dependency>
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-classic</artifactId>
-                <version>1.2.0</version>
+                <version>1.2.3</version>
                 <scope>test</scope>
             </dependency>
 
             <dependency>
                 <groupId>com.google.code.findbugs</groupId>
                 <artifactId>jsr305</artifactId>
-                <version>3.0.0</version>
+                <version>3.0.2</version>
                 <scope>provided</scope>
             </dependency>
 
@@ -236,30 +225,11 @@
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-scm-plugin</artifactId>
-                <version>1.9.4</version>
-                <configuration>
-                    <connectionType>developerConnection</connectionType>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.6</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                    <serverId>sonatype-oss-staging</serverId>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.19.1</version>
                 <configuration>
-                    <argLine>${argLine} -Dio.netty.leakDetectionLevel=simple -Dfile.encoding=UTF-8</argLine>
+                    <argLine>${argLine} -Dio.netty.leakDetectionLevel=simple
+                        -Dfile.encoding=UTF-8</argLine>
                     <!--<excludedGroups>info.bliki.annotations.IntegrationTest</excludedGroups>-->
                 </configuration>
             </plugin>
@@ -288,22 +258,77 @@
 
     <distributionManagement>
         <repository>
-            <id>sonatype-oss-staging</id>
-            <url>https://oss.sonatype.org/content/repositories/staging</url>
+            <id>xwiki-staging</id>
+            <name>XWiki Staging Repository</name>
+            <url>https://nexus.xwiki.org/nexus/service/local/staging/deploy/maven2/</url>
         </repository>
-
         <snapshotRepository>
-            <id>sonatype-oss-snapshots</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-            <uniqueVersion>false</uniqueVersion>
+            <id>nexus.xwiki.org</id>
+            <name>XWiki Maven Development Repository for Snapshots</name>
+            <url>http://nexus.xwiki.org/nexus/content/repositories/snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 
     <profiles>
         <profile>
             <id>release</id>
+            <activation>
+                <property>
+                    <name>performRelease</name>
+                    <value>true</value>
+                </property>
+            </activation>
             <build>
                 <plugins>
+                    <!-- Deploy source package -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <!-- Deploy javadoc package -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <!-- Force the Java version to use to build release -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-enforcer-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>enforce-java</id>
+                                <goals>
+                                    <goal>enforce</goal>
+                                </goals>
+                                <configuration>
+                                    <skip>${xwiki.enforcer.enforce-java.skip}</skip>
+                                    <rules>
+                                        <requireJavaVersion>
+                                            <message>You must release with Java 8!</message>
+                                            <version>[1.8, 1.9)</version>
+                                        </requireJavaVersion>
+                                    </rules>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <!-- Sign artifacts -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
@@ -318,15 +343,23 @@
                             </execution>
                         </executions>
                     </plugin>
+                    <!-- Automatically close and release project on Nexus -->
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>1.6.8</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>xwiki-staging</serverId>
+                            <nexusUrl>http://nexus.xwiki.org/nexus/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                            <keepStagingRepositoryOnCloseRuleFailure>true</keepStagingRepositoryOnCloseRuleFailure>
+                            <skipLocalStaging>false</skipLocalStaging>
+                            <skipStaging>false</skipStaging>
+                        </configuration>
+                    </plugin>
                 </plugins>
             </build>
         </profile>
     </profiles>
-
-    <repositories>
-        <repository>
-            <id>sonatype</id>
-            <url>https://oss.sonatype.org/content/groups/public/</url>
-        </repository>
-    </repositories>
 </project>

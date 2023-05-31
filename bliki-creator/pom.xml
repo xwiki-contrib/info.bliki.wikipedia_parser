@@ -8,12 +8,12 @@
     <artifactId>bliki-creator</artifactId>
     <packaging>jar</packaging>
     <name>Bliki (Creator)</name>
-    <version>3.1.1-SNAPSHOT</version>
     <description>This is the Bliki creator project.</description>
     <dependencies>
         <dependency>
             <groupId>info.bliki.wiki</groupId>
             <artifactId>bliki-core</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>info.bliki.wiki</groupId>

@@ -23,7 +23,8 @@ public class ImageFormat {
     public static final Set<String> TYPES =
         new HashSet<>(Arrays.asList("border", "frameless", "frame", "framed", "thumb", "thumbnail"));
 
-    public static final Set<String> HORIZONTAL_ALIGNMENT = new HashSet<>(Arrays.asList("left", "right", "none"));
+    public static final Set<String> HORIZONTAL_ALIGNMENT =
+        new HashSet<>(Arrays.asList("left", "right", "center", "none"));
 
     public static final Set<String> VERTICAL_ALIGNMENT =
         new HashSet<>(Arrays.asList("baseline", "sub", "super", "top", "text-top", "middle", "bottom", "text-bottom"));

@@ -1,12 +1,13 @@
 package info.bliki.api;
 
-import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
-import org.apache.http.conn.ssl.SSLContextBuilder;
-import org.apache.http.conn.ssl.TrustSelfSignedStrategy;
-
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
+
+import org.apache.http.conn.ssl.NoopHostnameVerifier;
+import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
+import org.apache.http.conn.ssl.TrustSelfSignedStrategy;
+import org.apache.http.ssl.SSLContextBuilder;
 
 public class TestUser extends User {
     public TestUser(String username, String password, String mediawikiApiUrl) {
@@ -25,7 +26,7 @@ public class TestUser extends User {
             try {
                 SSLContextBuilder sslBuilder = new SSLContextBuilder();
                 sslBuilder.loadTrustMaterial(null, new TrustSelfSignedStrategy());
-                return new SSLConnectionSocketFactory(sslBuilder.build(), SSLConnectionSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+                return new SSLConnectionSocketFactory(sslBuilder.build(), NoopHostnameVerifier.INSTANCE);
             } catch (NoSuchAlgorithmException | KeyStoreException | KeyManagementException ignored) {
                 return null;
             }

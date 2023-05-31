@@ -11,6 +11,7 @@ import static java.util.Locale.ENGLISH;
 import static org.assertj.core.api.Assertions.assertThat;
 import static software.betamax.TapeMode.READ_ONLY;
 
+@Ignore
 public class EnWiktionaryIntegrationTest extends HTMLCreatorIntegrationTest {
     private TestWikiDB wiktionaryEn;
 

@@ -386,6 +386,8 @@ public class Configuration implements IConfiguration {
     private final String wikiId;
     private final Casing casing;
 
+    private boolean forceFramedImage;
+
     public Configuration() {
         this(DEFAULT_WIKI_ID, Casing.FirstLetter);
     }
@@ -496,5 +498,20 @@ public class Configuration implements IConfiguration {
             throw new RuntimeException("Configuration.java - Properties file:" + propertyFile + " not found.");
         }
         return properties;
+    }
+
+    @Override
+    public boolean isForceFramedImage()
+    {
+        return this.forceFramedImage;
+    }
+
+    /**
+     * @param forceFramedImage indicate if the caption should always be forced below the image
+     */
+    @Override
+    public void setForceFramedImage(boolean forceFramedImage)
+    {
+        this.forceFramedImage = forceFramedImage;
     }
 }

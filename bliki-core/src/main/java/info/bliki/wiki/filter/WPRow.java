@@ -27,11 +27,11 @@ public class WPRow {
         fCells = cells;
         fParams = null;
         fType = WPCell.DEFAULT;
-        fAttributes = null;
+        fAttributes = Collections.emptyMap();
     }
 
     public Map<String, String> getAttributes() {
-        return Collections.unmodifiableMap(fAttributes);
+        return fAttributes;
     }
 
     /**
@@ -48,6 +48,8 @@ public class WPRow {
     public void setParams(String params) {
         this.fParams = params;
         this.fAttributes = Util.getAttributes(params);
+        this.fAttributes =
+            this.fAttributes != null ? Collections.unmodifiableMap(this.fAttributes) : Collections.emptyMap();
     }
 
     /**

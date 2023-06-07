@@ -141,13 +141,6 @@ public class WikipediaScanner {
                             cell = new WPCell(fScannerPosition);
                             cell.setType(WPCell.CAPTION);
                             cells.add(cell);
-                            nextNewlineCell(cell);
-                            cell.createTagStack(table, fSource, fWikiModel, fScannerPosition);
-                            cell = null;
-
-                            addTableRow(table, row);
-                            cells = new ArrayList<>();
-                            row = new WPRow(cells);
                             break;
                         case '}': // end of table - "\n|}"
                             addTableRow(table, row);

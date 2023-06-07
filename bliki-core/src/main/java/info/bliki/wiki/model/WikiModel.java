@@ -295,7 +295,7 @@ public class WikiModel extends AbstractWikiModel {
             imageSrc = imageSrc.replace("${image}", imageName);
             String type = imageFormat.getType();
             TagToken tag = null;
-            if (ImageFormat.TYPES_STANDALONE.contains(type)) {
+            if (isForceFramedImage() || ImageFormat.TYPES_STANDALONE.contains(type)) {
                 if (!fTagStack.isEmpty()) {
                     tag = peekNode();
                 }

@@ -104,4 +104,14 @@ public interface IConfiguration {
      * @return the default casing, defaults to {@link Casing#FirstLetter}.
      */
     Casing casing();
+
+    /**
+     * @return indicate if the caption should always be forced below the image
+     */
+    boolean isForceFramedImage();
+
+    /**
+     * @param forceFramedImage indicate if the caption should always be forced below the image
+     */
+    void setForceFramedImage(boolean forceFramedImage);
 }

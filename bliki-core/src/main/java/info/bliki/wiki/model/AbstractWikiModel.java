@@ -1637,4 +1637,19 @@ public abstract class AbstractWikiModel implements IWikiModel, IContext {
             fScribuntoEngine = new ScribuntoLuaEngine(this, compiledScriptCache);
         return fScribuntoEngine;
     }
+
+    @Override
+    public boolean isForceFramedImage()
+    {
+        return fConfiguration.isForceFramedImage();
+    }
+
+    /**
+     * @param forceFramedImage indicate if the caption should always be forced below the image
+     */
+    @Override
+    public void setForceFramedImage(boolean forceFramedImage)
+    {
+        this.fConfiguration.setForceFramedImage(forceFramedImage);
+    }
 }

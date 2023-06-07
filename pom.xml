@@ -4,7 +4,7 @@
     <artifactId>bliki</artifactId>
     <packaging>pom</packaging>
     <name>Bliki POM</name>
-    <version>3.2.0-xwiki</version>
+    <version>3.2.1-xwiki-SNAPSHOT</version>
     <description>
         The Bliki API is a Java-based Wiki to HTML renderer with MediaWiki syntax support.
 
@@ -39,7 +39,7 @@
         <connection>scm:git:git://github.com/xwiki-contrib/info.bliki.wikipedia_parser.git</connection>
         <developerConnection>scm:git:git@github.com:xwiki-contrib/info.bliki.wikipedia_parser.git</developerConnection>
         <url>https://github.com/xwiki-contrib/info.bliki.wikipedia_parser/tree/xwiki</url>
-        <tag>bliki-3.2.0-xwiki</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <issueManagement>

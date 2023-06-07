@@ -38,10 +38,9 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/xwiki-contrib/info.bliki.wiki.git</connection>
-        <developerConnection>
-            scm:git:git@github.com:xwiki-contrib/info.bliki.wiki.git</developerConnection>
-        <url>https://github.com/xwiki-contrib/info.bliki.wiki/tree/master</url>
+        <connection>scm:git:git://github.com/xwiki-contrib/info.bliki.wikipedia_parser.git</connection>
+        <developerConnection>scm:git:git@github.com:xwiki-contrib/info.bliki.wikipedia_parser.git</developerConnection>
+        <url>https://github.com/xwiki-contrib/info.bliki.wikipedia_parser/tree/xwiki</url>
         <tag>HEAD</tag>
     </scm>
 

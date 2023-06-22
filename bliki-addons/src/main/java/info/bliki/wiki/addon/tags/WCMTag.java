@@ -28,15 +28,15 @@ public class WCMTag extends NowikiTag {
 
         appendAttributes(buf, tagAtttributes);
         buf.append("\n");
-        String attValue = (String) tagAtttributes.get("code");
+        String attValue = tagAtttributes.get("code");
         if (attValue==null){
             buf.append(" code=\"net.sourceforge.webcompmath.applets.SimpleGraph\"");
         }
-        attValue = (String) tagAtttributes.get("width");
+        attValue = tagAtttributes.get("width");
         if (attValue==null){
             buf.append(" width=\"640\"");
         }
-        attValue = (String) tagAtttributes.get("height");
+        attValue = tagAtttributes.get("height");
         if (attValue==null){
             buf.append(" height=\"400\"");
         }

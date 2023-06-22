@@ -25,7 +25,7 @@ public class YacasEvalTag extends NowikiTag {
         TagNode node = this;
         Map<String, String> tagAttributes = node.getAttributes();
 
-        String exprValue = (String) tagAttributes.get("expr");
+        String exprValue = tagAttributes.get("expr");
         if (exprValue == null) {
             buf.append("<a href=\"javascript:yacasEval(\'NIL\');\">NIL</a>");
             return;
@@ -35,7 +35,7 @@ public class YacasEvalTag extends NowikiTag {
         buf.append(exprValue);
         buf.append("\');\">");
 
-        String titleValue = (String) tagAttributes.get("title");
+        String titleValue = tagAttributes.get("title");
         if (titleValue == null) {
             buf.append(exprValue);
             buf.append("</a>");
